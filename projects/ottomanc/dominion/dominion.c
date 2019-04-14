@@ -709,11 +709,12 @@ int smithyEffect(struct gameState *state, int currentPlayer, int handPos)
   for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
+    drawCard(currentPlayer, state);
 	}
 			
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
-  return 1;
+  return 0;
 }
 
 //Village implementation
