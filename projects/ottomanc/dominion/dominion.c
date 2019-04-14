@@ -713,7 +713,7 @@ int smithyEffect(struct gameState *state, int currentPlayer, int handPos)
 			
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
-  return 0;
+  return 1;
 }
 
 //Village implementation
