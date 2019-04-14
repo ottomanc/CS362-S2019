@@ -770,12 +770,7 @@ int minionEffect(struct gameState *state, int currentPlayer, int handPos, int ch
 			{
 			  discardCard(handPos, i, state, 0);
 			}
-							
-		      //draw 4
-		      for (j = 0; j < 4; j++)
-			{
-			  drawCard(i, state);
-			}
+
 		    }
 		}
 	    }
