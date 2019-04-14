@@ -716,6 +716,20 @@ int smithyEffect(struct gameState *state, int currentPlayer, int handPos)
   return 0;
 }
 
+//Village implementation
+int villageEffect(struct gameState *state, int currentPlayer, int handPos)
+{
+  //+1 Card
+  drawCard(currentPlayer, state);
+			
+  //+2 Actions
+  state->numActions = state->numActions + 2;
+			
+  //discard played card from hand
+  discardCard(handPos, currentPlayer, state, 0);
+  return 0;
+}
+
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int i;
@@ -866,15 +880,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return smithyEffect(state,currentPlayer, handPos);
 		
     case village:
-      //+1 Card
-      drawCard(currentPlayer, state);
-			
-      //+2 Actions
-      state->numActions = state->numActions + 2;
-			
-      //discard played card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+      return villageEffect(state, currentPlayer, handCard);
 		
     case baron:
       state->numBuys++;//Increase buys by 1!
