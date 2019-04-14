@@ -880,7 +880,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return smithyEffect(state,currentPlayer, handPos);
 		
     case village:
-      return villageEffect(state, currentPlayer, handCard);
+      return villageEffect(state, currentPlayer, handPos);
 		
     case baron:
       state->numBuys++;//Increase buys by 1!
