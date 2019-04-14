@@ -732,7 +732,7 @@ int villageEffect(struct gameState *state, int currentPlayer, int handPos)
 int minionEffect(struct gameState *state, int currentPlayer, int handPos, int choice1, int choice2)
 {
   int i;
-  int j;
+  //int j;
   //+1 action
   state->numActions++;
 			
