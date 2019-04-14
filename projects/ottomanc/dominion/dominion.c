@@ -644,9 +644,10 @@ int getCost(int cardNumber)
 }
 
 //Adventurer implementation
-int adventurerEffect(struct gameState *state, int drawntreasure, int currentPlayer, int temphand[MAX_HAND])
+int adventurerEffect(struct gameState *state, int drawntreasure, int currentPlayer)
 {
   int cardDrawn;
+  int temphand[MAX_HAND];
   int z = 0;// this is the counter for the temp hand
 
   while(drawntreasure<2){
@@ -683,8 +684,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   int tributeRevealedCards[2] = {-1, -1};
   int temphand[MAX_HAND];// moved above the if statement
   int drawntreasure=0;
-  int cardDrawn;
-  int z = 0;// this is the counter for the temp hand
+  //int cardDrawn;
+  //int z = 0;// this is the counter for the temp hand
   if (nextPlayer > (state->numPlayers - 1)){
     nextPlayer = 0;
   }
@@ -694,7 +695,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      return adventurerEffect(state, drawntreasure, currentPlayer, temphand[MAX_HAND]);
+      return adventurerEffect(state, drawntreasure, currentPlayer);
 			
     case council_room:
       //+4 Cards
