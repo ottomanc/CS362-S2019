@@ -54,9 +54,9 @@ int main() {
 	printf("hand count = %d, expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	printf("deck count = %d, expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards + shuffledCards);
 	printf("coins = %d, expected = %d\n", testG.coins, G.coins + xtraCoins);
-	assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
-	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
-	assert(testG.coins == G.coins + xtraCoins);
+//	assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
+//	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
+//	assert(testG.coins == G.coins + xtraCoins);
 
 	// ----------- TEST 2: no state changes for other players --------------
 	printf("TEST 2: check no state changes for other players\n");
