@@ -50,7 +50,7 @@ int main() {
 	//discard all treasure cards from the deck
     for(i=0; i<testG.deckCount[thisPlayer]; i++){
         if(testG.deck[thisPlayer][i] == copper || testG.deck[thisPlayer][i] == silver || testG.deck[thisPlayer][i] == gold){
-            printf("removed one treasure\n");
+            //printf("removed one treasure\n");
             discardCard(i, thisPlayer, &testG, 0);
         }
     }
@@ -65,41 +65,28 @@ int main() {
 //	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
 //	assert(testG.coins == G.coins + xtraCoins);
 
-/*
-	// ----------- TEST 2: no state changes for other players --------------
-	printf("TEST 2: check no state changes for other players\n");
+	// ----------- TEST 2: test if there are no cards in the deck--------------
+	printf("TEST 2: test with no cards in the deck\n");
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
-
-    //check each player to see if their cards in hand and deck have changed
-	newCards = 0;
-	for(i=1; i<G.numPlayers; i++){
-        printf("player %d hand count = %d, expected = %d\n", i, testG.handCount[i], G.handCount[i]);
-        assert(testG.handCount[i] == G.handCount[i]);
-        printf("player %d deck count = %d, expected = %d\n", i, testG.deckCount[i], G.deckCount[i]);
-        assert(testG.deckCount[i] == G.deckCount[i]);     
+	//discard all cards from the deck
+    for(i=0; i<testG.deckCount[thisPlayer]; i++){
+            discardCard(i, thisPlayer, &testG, 0);
     }
+    cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
 
-	// ----------- TEST 3: no state changes for victory card piles and kingdom card piles --------------
+	newCards = 2;
+	xtraCoins = 0;
+	printf("hand count = %d, expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
+	printf("deck count = %d, expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards + shuffledCards);
+	printf("coins = %d, expected = %d\n", testG.coins, G.coins + xtraCoins);
+//	assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
+//	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
+//	assert(testG.coins == G.coins + xtraCoins);
 
-	printf("TEST 3: check no change in victory + kingdom card piles\n");
 
-	// copy the game state to a test case
-	memcpy(&testG, &G, sizeof(struct gameState));
-	cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
-
-    //check for each victory card pile that there is no change
-    printf("estate count = %d, expected = %d\n", testG.supplyCount[estate], G.supplyCount[estate]);
-    printf("duchy count = %d, expected = %d\n", testG.supplyCount[duchy], G.supplyCount[duchy]);
-    printf("province count = %d, expected = %d\n", testG.supplyCount[province], G.supplyCount[province]);
-    assert(testG.supplyCount[estate] == G.supplyCount[estate]);
-    assert(testG.supplyCount[duchy] == G.supplyCount[duchy]);
-    assert(testG.supplyCount[province] == G.supplyCount[province]);        
-*/
 	printf("\n >>>>> SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
-
 
 	return 0;
 }
