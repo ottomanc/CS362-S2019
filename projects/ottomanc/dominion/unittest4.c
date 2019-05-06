@@ -48,7 +48,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	cardEffect(council_room, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
 
 	newCards = 1;
 	xtraCoins = 0;
@@ -64,7 +64,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	cardEffect(council_room, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
 
     newBuys = 2;
 	printf("Actions count = %d, expected = %d\n", testG.numActions, G.numActions + newBuys);
@@ -75,7 +75,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	cardEffect(smithy, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
 
     //check each player to see if their cards in hand and deck have changed
 	newCards = 0;
@@ -92,7 +92,7 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	cardEffect(council_room, choice1, choice2, choice3, &testG, handpos, &bonus);
+	cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
 
     //check for each victory card pile that there is no change
     printf("estate count = %d, expected = %d\n", testG.supplyCount[estate], G.supplyCount[estate]);
