@@ -52,7 +52,7 @@ unittestresults: unittest1 unittest2 unittest3 unittest4
 	./unittest2 >> unittestresults.out
 	./unittest3 >> unittestresults.out
 	./unittest4 >> unittestresults.out
-	gcov dominion.c >> unittestresults.out
+	gcov dominion.c -b >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out
 
 all: playdom player unittest1 unittest2 unittest3 unittest4 cardtest1 unittestresults
