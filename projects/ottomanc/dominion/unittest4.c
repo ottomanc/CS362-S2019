@@ -29,7 +29,7 @@ int main() {
     int shuffledCards = 0;
 
     int i;
-    int newBuys;
+    int newActions;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int seed = 1000;
     int numPlayers = 2;
@@ -66,9 +66,9 @@ int main() {
 	memcpy(&testG, &G, sizeof(struct gameState));
 	cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus);
 
-    newBuys = 2;
-	printf("Actions count = %d, expected = %d\n", testG.numActions, G.numActions + newBuys);
-	assert(testG.numActions == G.numActions + newBuys);
+    newActions = 2;
+	printf("Actions count = %d, expected = %d\n", testG.numActions, G.numActions + newActions);
+	//assert(testG.numActions == G.numActions + newActions);
     
 	// ----------- TEST 3: no state changes for other players --------------
 	printf("TEST 3: check no state changes for other players\n");
