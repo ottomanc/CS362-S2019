@@ -80,9 +80,9 @@ int main() {
     //check each player to see if their cards in hand and deck have changed
 	newCards = 1;
 	for(i=1; i<G.numPlayers; i++){
-        printf("player %d hand count = %d, expected = %d\n", i, testG.handCount[i], G.handCount[i]);
+        printf("player %d hand count = %d, expected = %d\n", i, testG.handCount[i], G.handCount[i] + newCards);
         assert(testG.handCount[i] == G.handCount[i] + newCards);
-        printf("player %d deck count = %d, expected = %d\n", i, testG.deckCount[i], G.deckCount[i]);
+        printf("player %d deck count = %d, expected = %d\n", i, testG.deckCount[i], G.deckCount[i] - newCards);
         assert(testG.deckCount[i] == G.deckCount[i] - newCards);     
     }
 
