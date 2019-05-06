@@ -56,14 +56,14 @@ int main() {
     }
     cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
 
-	newCards = 2;
+	newCards = 0;
 	xtraCoins = 0;
 	printf("hand count = %d, expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	printf("deck count = %d, expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards + shuffledCards);
 	printf("coins = %d, expected = %d\n", testG.coins, G.coins + xtraCoins);
-//	assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
-//	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
-//	assert(testG.coins == G.coins + xtraCoins);
+	assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
+	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
+	assert(testG.coins == G.coins + xtraCoins);
 
 	// ----------- TEST 2: test if there are no cards in the deck--------------
 	printf("TEST 2: test with no cards in the deck\n");
@@ -76,14 +76,14 @@ int main() {
     }
     cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
 
-	newCards = 2;
+	newCards = 0;
 	xtraCoins = 0;
 	printf("hand count = %d, expected = %d\n", testG.handCount[thisPlayer], G.handCount[thisPlayer] + newCards - discarded);
 	printf("deck count = %d, expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards + shuffledCards);
 	printf("coins = %d, expected = %d\n", testG.coins, G.coins + xtraCoins);
-//	assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
-//	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
-//	assert(testG.coins == G.coins + xtraCoins);
+	assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
+	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
+	assert(testG.coins == G.coins + xtraCoins);
 
 
 	printf("\n >>>>> SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
