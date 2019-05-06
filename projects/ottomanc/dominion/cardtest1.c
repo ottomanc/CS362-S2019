@@ -50,6 +50,7 @@ int main() {
 	//discard all treasure cards from the deck
     for(i=0; i<testG.deckCount[thisPlayer]; i++){
         if(testG.deck[thisPlayer][i] == copper || testG.deck[thisPlayer][i] == silver || testG.deck[thisPlayer][i] == gold){
+            printf("removed one: %s\n", testG.deck[thisPlayer][i]);
             discardCard(i, thisPlayer, &testG, 0);
         }
     }
