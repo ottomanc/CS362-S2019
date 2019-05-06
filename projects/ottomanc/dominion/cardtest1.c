@@ -27,6 +27,7 @@ int main() {
     int discarded = 1;
     int xtraCoins = 0;
     int shuffledCards = 0;
+    int trashCard = 0;
 
     int i;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
@@ -52,6 +53,7 @@ int main() {
         if(testG.deck[thisPlayer][i] == copper || testG.deck[thisPlayer][i] == silver || testG.deck[thisPlayer][i] == gold){
             //printf("removed one treasure\n");
             discardCard(i, thisPlayer, &testG, 0);
+            trashCard++;
         }
     }
     cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
@@ -62,17 +64,19 @@ int main() {
 	printf("deck count = %d, expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards + shuffledCards);
 	printf("coins = %d, expected = %d\n", testG.coins, G.coins + xtraCoins);
 	assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
-	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
+	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - trashCard + shuffledCards);
 	assert(testG.coins == G.coins + xtraCoins);
 
 	// ----------- TEST 2: test if there are no cards in the deck--------------
 	printf("TEST 2: test with no cards in the deck\n");
 
+    trashCard = 0;
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
 	//discard all cards from the deck
     for(i=0; i<testG.deckCount[thisPlayer]; i++){
             discardCard(i, thisPlayer, &testG, 0);
+            trashCard++;
     }
     cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
 
@@ -82,7 +86,7 @@ int main() {
 	printf("deck count = %d, expected = %d\n", testG.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards + shuffledCards);
 	printf("coins = %d, expected = %d\n", testG.coins, G.coins + xtraCoins);
 	assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
-	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
+	assert(testG.deckCount[thisPlayer] == G.deckCount[thisPlayer] - trashCard + shuffledCards);
 	assert(testG.coins == G.coins + xtraCoins);
 
 
