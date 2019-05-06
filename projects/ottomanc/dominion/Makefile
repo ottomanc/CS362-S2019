@@ -46,9 +46,9 @@ unittest4: unittest4.c dominion.o rngs.o
 
 unittestresults: unittest1 unittest2 unittest3 unittest4
 	./unittest1 &> unittestresults.out
-	./unittest2 &> unittestresults.out
-	./unittest3 &> unittestresults.out
-	./unittest4 &> unittestresults.out
+	cat unittest2 >> unittestresults.out
+	cat unittest3 >> unittestresults.out
+	cat unittest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out
 
