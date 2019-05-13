@@ -25,16 +25,15 @@ char *inputString()
     int stringLength;
     stringLength = 6;
     //Reusing similar code to the inputChar
-    char charOptions[] = {'\0','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    char charOptions[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     int r1;   //random number to select from the array
     //set up the string
-    char chosenString[6] = {' ',' ',' ',' ',' ',' '};
+    char chosenString[6] = {' ',' ',' ',' ',' ','\0'};
     //for each char in the array
-    for(int i=0; i<6; i++){
-      r1 = rand() % 27;   //choose a number from 0-32
+    for(int i=0; i<5; i++){
+      r1 = rand() % 26;   //choose a number from 0-32
       chosenString[i] = charOptions[r1];
     }
-
     return chosenString;
 }
 
