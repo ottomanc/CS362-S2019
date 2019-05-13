@@ -25,7 +25,7 @@ char *inputString()
     int stringLength;
     stringLength = 6;
     //Reusing similar code to the inputChar
-    char charOptions[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    char charOptions[] = {'r','e','s','t'};
     int r1;   //random number to select from the array
     //set up the string
     char chosenString[6] = {' ',' ',' ',' ',' ','\0'};
