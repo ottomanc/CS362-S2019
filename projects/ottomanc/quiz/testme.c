@@ -31,7 +31,7 @@ char *inputString()
     char chosenString[6] = {' ',' ',' ',' ',' ','\0'};
     //for each char in the array
     for(int i=0; i<5; i++){
-      r1 = rand() % 26;   //choose a number from 0-32
+      r1 = rand() % 5;   //choose a number from 0-4
       chosenString[i] = charOptions[r1];
     }
     return chosenString;
