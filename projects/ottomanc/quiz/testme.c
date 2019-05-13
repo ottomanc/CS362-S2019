@@ -6,13 +6,32 @@
 char inputChar()
 {
     // TODO: rewrite this function
-    return ' ';
+    char charOptions[] = {' ','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','(',')','{','}','[',']'};
+    char chosenChar;
+    int r1;   //random number to select from the array
+    r1 = rand() % 33;   //choose a number from 0-32
+    chosenChar = charOptions[r1];
+    return chosenChar;
 }
 
 char *inputString()
 {
     // TODO: rewrite this function
-    return "";
+    //string should be of length 6
+    int stringLength;
+    stringLength = 6;
+    //Reusing similar code to the inputChar
+    char charOptions[] = {' ','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    int r1;   //random number to select from the array
+    //set up the string
+    char chosenString[6] = {' ',' ',' ',' ',' ',' '};
+    //for each char in the array
+    for(int i=0; i<6; i++){
+      r1 = rand() % 27;   //choose a number from 0-32
+      chosenString[i] = charOptions[r1];
+    }
+
+    return chosenString;
 }
 
 void testme()
