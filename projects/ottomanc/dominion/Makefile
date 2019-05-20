@@ -58,4 +58,4 @@ all: playdom player randomtestadventurer randomtestresults
 #all: playdom player randomtestcard1 randomtestcard2 randomtestadventurer randomtestresults
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe randomtestcard1 randomtestcard1.exe
