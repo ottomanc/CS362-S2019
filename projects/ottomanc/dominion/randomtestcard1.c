@@ -46,7 +46,7 @@ int main () {
       ((char*)&G)[i] = floor(Random() * 256);
     }
     p = floor(Random() * 2);
-    G.deckCount[p] = floor(Random() * MAX_DECK);
+    G.deckCount[p] = 20;
     G.discardCount[p] = floor(Random() * MAX_DECK);
     G.handCount[p] = floor(Random() * MAX_HAND);
     printf("now going to check council room");
