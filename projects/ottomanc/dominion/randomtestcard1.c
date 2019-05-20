@@ -14,6 +14,7 @@
 #define NOISY_TEST 1
 
 int checkCouncilRoom(int p, struct gameState *post){
+  printf("you are inside the checkcouncilroom");
   struct gameState pre;
   memcpy (&pre, post, sizeof(struct gameState));
   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
@@ -49,6 +50,7 @@ int main () {
     G.discardCount[p] = floor(Random() * MAX_DECK);
     G.handCount[p] = floor(Random() * MAX_HAND);
     checkCouncilRoom(p, &G);
+    printf("you made it out of the checkCouncilRoom");
     //printf("completed test %d", n);
   }
 
