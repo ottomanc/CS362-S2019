@@ -20,7 +20,7 @@ int checkCouncilRoom(int p, struct gameState *post){
 
   int r;
  
-  r = cardEffect(adventurer, choice1, choice2, choice3, post, handpos, &bonus);
+  r = cardEffect(council_room, choice1, choice2, choice3, post, handpos, &bonus);
 
   assert (r == 0);
 
@@ -54,5 +54,5 @@ int main () {
 
   printf ("ALL TESTS OK\n");
 
-  return 0;
+  exit(0);
 }
