@@ -40,7 +40,9 @@ runtests: testDrawCard
 randomtestadventurer: randomtestadventurer.c dominion.o rngs.o
 	gcc -o randomtestadventurer -g randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
 
-randomtestresults: randomtestcard1 randomtestcard2 randomtestadventurer
+#randomtestresults: randomtestcard1 randomtestcard2 randomtestadventurer
+
+randomtestresults: randomtestadventurer
 	./randomtestadventurer &> randomtestresults.out
 #	./randomtestcard1 >> randomtestresults.out
 #	./randomtestcard2 >> randomtestresults.out
