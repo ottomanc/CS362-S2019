@@ -25,7 +25,7 @@ int checkAdventurer(int thisPlayer, struct gameState *G) {
   struct gameState testG;
 
 	// copy the game state to a test case
-	memcpy(&testG, &G, sizeof(struct gameState));
+	memcpy(&testG, G, sizeof(struct gameState));
 
   //run the cardEffect function with the random gameState setup
 	cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
