@@ -38,7 +38,7 @@ int checkAdventurer(int thisPlayer, struct gameState *G) {
 	//assert(testG.handCount[thisPlayer] == G->handCount[thisPlayer] + newCards - discarded);
   //Check the deck count
 	//assert(testG.deckCount[thisPlayer] == G->deckCount[thisPlayer] - newCards + shuffledCards);
-
+  return 0;
 }
 
 int main () {
