@@ -35,10 +35,10 @@ int checkAdventurer(int thisPlayer, struct gameState *G) {
 	printf("hand count = %d, expected = %d\n", testG.handCount[thisPlayer], G->handCount[thisPlayer] + newCards - discarded);
   printf("deck count = %d, expected = %d\n", testG.deckCount[thisPlayer], G->deckCount[thisPlayer] - newCards + shuffledCards);
   //Check the hand count
-	//assert(testG.handCount[thisPlayer] == G->handCount[thisPlayer] + newCards - discarded);
+	assert(testG.handCount[thisPlayer] == G->handCount[thisPlayer] + newCards - discarded);
   //Check the deck count
-	//assert(testG.deckCount[thisPlayer] == G->deckCount[thisPlayer] - newCards + shuffledCards);
-  return 0;
+	assert(testG.deckCount[thisPlayer] == G->deckCount[thisPlayer] - newCards + shuffledCards);
+//return 0;
 }
 
 int main () {
