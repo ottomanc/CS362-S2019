@@ -14,10 +14,10 @@
 #define NOISY_TEST 1
 
 int checkAdventurer(int thisPlayer, struct gameState *post) {
-  int newCards = 0;
-  int discarded = 1;
+//  int newCards = 0;
+//  int discarded = 1;
   //int xtraCoins = 0;
-  int shuffledCards = 0;
+//  int shuffledCards = 0;
 
   //int i;
   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
@@ -30,7 +30,7 @@ int checkAdventurer(int thisPlayer, struct gameState *post) {
 	memcpy(&pre, post, sizeof(struct gameState));
 
   //run the cardEffect function with the random gameState setup
-	r = cardEffect(adventurer, choice1, choice2, choice3, post, handpos, bonus);
+	r = cardEffect(adventurer, choice1, choice2, choice3, post, handpos, &bonus);
 
   //Check the results with assert statements
 	//newCards = 2;
