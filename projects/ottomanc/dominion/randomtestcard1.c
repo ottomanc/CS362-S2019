@@ -49,6 +49,7 @@ int main () {
     G.deckCount[p] = floor(Random() * MAX_DECK);
     G.discardCount[p] = floor(Random() * MAX_DECK);
     G.handCount[p] = floor(Random() * MAX_HAND);
+    printf("now going to check council room");
     checkCouncilRoom(p, &G);
     printf("you made it out of the checkCouncilRoom");
     //printf("completed test %d", n);
