@@ -67,6 +67,7 @@ int main () {
     G.discardCount[p] = floor(Random() * MAX_DECK);
     G.handCount[p] = floor(Random() * MAX_HAND);
     checkAdventurer(p, &G);
+    printf("completed test %d", n);
   }
 
   printf ("ALL TESTS OK\n");
