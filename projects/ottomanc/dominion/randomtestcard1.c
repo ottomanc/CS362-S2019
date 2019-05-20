@@ -25,6 +25,8 @@ int checkCouncilRoom(int p, struct gameState *post){
   assert (r == 0);
 
   assert(memcmp(&pre, post, sizeof(struct gameState)) == 0);
+
+  return 0;
 }
 
 int main () {
@@ -54,5 +56,5 @@ int main () {
 
   printf ("ALL TESTS OK\n");
 
-  exit(0);
+  return 0;
 }
