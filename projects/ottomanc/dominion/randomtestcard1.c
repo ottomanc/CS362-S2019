@@ -21,7 +21,7 @@ int checkCouncilRoom(int p, struct gameState *post){
 
   int r;
  
-  r = cardEffect(council_room, choice1, choice2, choice3, post, handpos, &bonus);
+  r = council_roomEffect(post, p, handpos);
 
   assert (r == 0);
 
