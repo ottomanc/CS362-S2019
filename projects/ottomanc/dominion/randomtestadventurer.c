@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
+#include <math.h>
 #include "rngs.h"
 
 #define DEBUG 0
@@ -15,10 +16,10 @@
 int checkAdventurer(int thisPlayer, struct gameState *G) {
   int newCards = 0;
   int discarded = 1;
-  int xtraCoins = 0;
+  //int xtraCoins = 0;
   int shuffledCards = 0;
 
-  int i;
+  //int i;
   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
 
   struct gameState testG;
@@ -42,10 +43,11 @@ int checkAdventurer(int thisPlayer, struct gameState *G) {
 
 int main () {
 
-  int i, n, r, p, deckCount, discardCount, handCount;
+  int i, n, p;
+//r, p, deckCount, discardCount, handCount;
 
-  int k[10] = {adventurer, council_room, feast, gardens, mine,
-	       remodel, smithy, village, baron, great_hall};
+//  int k[10] = {adventurer, council_room, feast, gardens, mine,
+//	       remodel, smithy, village, baron, great_hall};
 
   struct gameState G;
 
@@ -68,8 +70,6 @@ int main () {
   }
 
   printf ("ALL TESTS OK\n");
-
-  exit(0);
 
   return 0;
 }
