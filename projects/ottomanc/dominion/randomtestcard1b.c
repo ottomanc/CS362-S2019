@@ -32,8 +32,8 @@ int main () {
 
   int i, n, p, it;
 
-//  int k[10] = {adventurer, council_room, feast, gardens, mine,
-//	       remodel, smithy, village, baron, great_hall};
+  int k[10] = {adventurer, council_room, feast, gardens, mine,
+	       remodel, smithy, village, baron, great_hall};
 
   struct gameState G;
 
@@ -47,9 +47,10 @@ int main () {
   PutSeed(3);
 
   for (n = 0; n < 2000; n++) {
-    for (i = 0; i < sizeof(struct gameState); i++) {
-      ((char*)&G)[i] = floor(Random() * 256);
-    }
+//    for (i = 0; i < sizeof(struct gameState); i++) {
+//      ((char*)&G)[i] = floor(Random() * 256);
+//    }
+    initializeGame(2, k, 1, &G);
     p = floor(Random() * 2);
     G.deckCount[p] = floor(Random() * MAX_DECK);
     G.discardCount[p] = floor(Random() * MAX_DECK);
