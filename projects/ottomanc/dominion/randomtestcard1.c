@@ -42,7 +42,7 @@ int checkCouncilRoom(int p, struct gameState *post){
   }
 
   //each other player draws a card
-  for(i = 0; i < 2; i++){
+  for(i = 0; i < pre.numPlayers; i++){
       if (i != p){
       if (pre.deckCount[p] > 0) {
         pre.handCount[p]++;
