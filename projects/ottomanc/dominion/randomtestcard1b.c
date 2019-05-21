@@ -13,7 +13,7 @@
 #define DEBUG 0
 #define NOISY_TEST 1
 
-int checkCouncilRoom(int p, struct gameState *post){
+int checkCouncilRoom(struct gameState *post){
   printf("you are inside the checkcouncilroom");
   struct gameState pre;
   memcpy (&pre, post, sizeof(struct gameState));
@@ -44,9 +44,9 @@ int main () {
   initializeGame(2, k, 1, &G);
 
   printf("now going to check council room");
-  checkCouncilRoom(p, &G);
+  checkCouncilRoom(&G);
   printf("you made it out of the checkCouncilRoom");
-  printf("completed test %d", n);
+  //printf("completed test %d", n);
 
   printf ("ALL TESTS OK\n");
 
