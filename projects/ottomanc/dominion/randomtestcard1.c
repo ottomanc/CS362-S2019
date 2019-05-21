@@ -51,6 +51,13 @@ int main () {
     G.deckCount[p] = floor(Random() * MAX_DECK);
     G.discardCount[p] = floor(Random() * MAX_DECK);
     G.handCount[p] = floor(Random() * MAX_HAND);
+
+    //set up the card piles
+    memset(G.deck[p], 0, sizeof(int) * G.deckCount[p]);
+	memset(G.discard[p], 0, sizeof(int) * G.discardCount[p]);
+	memset(G.hand[p], 0, sizeof(int) * G.handCount[p]);
+
+
     printf("now going to check council room");
     checkCouncilRoom(p, &G);
     printf("you made it out of the checkCouncilRoom");
