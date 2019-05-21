@@ -42,7 +42,7 @@ int checkCouncilRoom(int p, struct gameState *post){
 
   //check and see if they match
   assert(pre.numBuys == post->numBuys);
-  printf("pre handcount: %d; post handcount: %d\n", pre.handCount[p], post->handCount[p]);
+  //printf("pre handcount: %d; post handcount: %d\n", pre.handCount[p], post->handCount[p]);
   assert(pre.handCount[p] == post->handCount[p]);
   assert(pre.discardCount[p] == post->discardCount[p]);
 
