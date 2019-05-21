@@ -30,23 +30,18 @@ int checkCouncilRoom(int p, struct gameState *post){
 
 int main () {
 
-  int i, j, n, p, r, numPlayers;
-  //int numPlayers = 2;
-  //int seed = 1000;
-  struct gameState G;
+  int n, p;
 
   int k[10] = {adventurer, council_room, feast, gardens, mine,
 	       remodel, smithy, village, baron, great_hall};
 
   struct gameState G;
 
-  numPlayers = 2;
-
   printf ("Testing Council Room Card.\n");
 
   printf ("RANDOM TESTS.\n");
 
-  r = initializeGame(2, k, 1, &G);
+  initializeGame(2, k, 1, &G);
 
   printf("now going to check council room");
   checkCouncilRoom(p, &G);
