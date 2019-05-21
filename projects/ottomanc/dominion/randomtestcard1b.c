@@ -30,7 +30,7 @@ int checkCouncilRoom(struct gameState *post){
 
 int main () {
 
-  int i, n, p;
+  int i, n, p, it;
 
 //  int k[10] = {adventurer, council_room, feast, gardens, mine,
 //	       remodel, smithy, village, baron, great_hall};
@@ -57,14 +57,17 @@ int main () {
     G.whoseTurn = p;
     G.playedCardCount = 0;
 
+    //Draw hand pile
+    for (it = 0; it < G.handCount[G.whoseTurn]; it++){
+      drawCard(G.whoseTurn, &G);
+    }
+
     printf("now going to check council room\n");
     checkCouncilRoom(&G);
-    printf("you made it out of the checkCouncilRoom]n");
+    printf("you made it out of the checkCouncilRoom\n");
     printf("completed test %d\n", n);
 
   }
-
-
 
   printf ("ALL TESTS OK\n");
 
