@@ -46,7 +46,7 @@ int checkCouncilRoom(int p, struct gameState *post){
   assert(pre.handCount[p] == post->handCount[p]);
   assert(pre.discardCount[p] == post->discardCount[p]);
 
-//  assert(memcmp(&pre, post, sizeof(struct gameState)) == 0);
+  assert(memcmp(&pre, post, sizeof(struct gameState)) == 0);
 }
 
 

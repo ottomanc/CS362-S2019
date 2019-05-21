@@ -34,9 +34,6 @@ runtests: testDrawCard
 randomtestcard1: randomtestcard1.c dominion.o rngs.o
 	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
 
-randomtestcard1b: randomtestcard1b.c dominion.o rngs.o
-	gcc -o randomtestcard1b -g randomtestcard1b.c dominion.o rngs.o $(CFLAGS)
-
 #uncomment when all done
 #randomtestcard2: randomtestcard2.c dominion.o rngs.o
 #	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
@@ -48,8 +45,8 @@ randomtestadventurer: randomtestadventurer.c dominion.o rngs.o
 
 #uncomment when all done
 randomtestresults: randomtestadventurer
-	./randomtestadventurer &> randomtestresults.out
-#	./randomtestcard1 >> randomtestresults.out
+	./randomtestcard1 &> randomtestresults.out
+	./randomtestadventurer >> randomtestresults.out
 #	./randomtestcard2 >> randomtestresults.out
 	gcov dominion.c -b >> randomtestresults.out
 	cat dominion.c.gcov >> randomtestresults.out
@@ -57,7 +54,7 @@ randomtestresults: randomtestadventurer
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player randomtestadventurer randomtestresults
+all: playdom player randomtestcard1 adventurer randomtestresults
 
 #uncomment when all done
 #all: playdom player randomtestcard1 randomtestcard2 randomtestadventurer randomtestresults
