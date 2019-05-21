@@ -54,7 +54,7 @@ int main () {
     //G.whoseTurn = p;
     G.playedCardCount = floor(Random() * MAX_HAND);
     //G.deckCount[p] = floor(Random() * MAX_DECK);
-    G.discardCount[p] = floor(Random() * MAX_DECK);
+    //G.discardCount[p] = floor(Random() * MAX_DECK);
     G.handCount[p] = floor(Random() * MAX_HAND);
 
     //set player decks
@@ -79,7 +79,7 @@ int main () {
     {  
         //initialize hand size to Random
         G.handCount[i] = floor(Random() * MAX_DECK);
-        G.discardCount[i] = floor(Random() * MAX_DECK);
+        G.discardCount[i] = 0;
     }
 
     //initialize first player's turn
