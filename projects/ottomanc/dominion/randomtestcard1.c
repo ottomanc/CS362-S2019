@@ -13,19 +13,38 @@
 #define DEBUG 0
 #define NOISY_TEST 1
 
-int checkCouncilRoom(struct gameState *post){
+int checkCouncilRoom(int p, struct gameState *post){
   //printf("you are inside the checkcouncilroom\n");
   struct gameState pre;
   memcpy (&pre, post, sizeof(struct gameState));
   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
 
-  int r;
+  int r, i;
  
   r = cardEffect(council_room, choice1, choice2, choice3, post, handpos, &bonus);
 
   assert (r == 0);
 
-  //assert(memcmp(&pre, post, sizeof(struct gameState)) == 0);
+  //replicate what the function call should do to see if the pre and post states then match
+  for(i = 0; i < 4; i++){
+    if (pre.deckCount[p] > 0) {
+      pre.handCount[p]++;
+      pre.hand[p][pre.handCount[p]-1] = pre.deck[p][pre.deckCount[p]-1];
+      pre.deckCount[p]--;
+    } else if (pre.discardCount[p] > 0) {
+      memcpy(pre.deck[p], post->deck[p], sizeof(int) * pre.discardCount[p]);
+      memcpy(pre.discard[p], post->discard[p], sizeof(int)*pre.discardCount[p]);
+      pre.hand[p][post->handCount[p]-1] = post->hand[p][post->handCount[p]-1];
+      pre.handCount[p]++;
+      pre.deckCount[p] = pre.discardCount[p]-1;
+      pre.discardCount[p] = 0;
+    }
+  }
+
+  //increase the numBuys by 1
+  pre.numBuys++;
+
+  assert(memcmp(&pre, post, sizeof(struct gameState)) == 0);
 }
 
 int main () {
@@ -63,7 +82,7 @@ int main () {
     G.numBuys = floor(Random() * MAX_DECK);
 
     //printf("now going to check council room\n");
-    checkCouncilRoom(&G);
+    checkCouncilRoom(p, &G);
     //printf("you made it out of the checkCouncilRoom\n");
     //printf("completed test %d\n", n);
 
