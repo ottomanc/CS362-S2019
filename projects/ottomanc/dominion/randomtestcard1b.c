@@ -30,7 +30,7 @@ int checkCouncilRoom(struct gameState *post){
 
 int main () {
 
-  int n, p, it;
+  int n, p;
 
   int k[10] = {adventurer, council_room, feast, gardens, mine,
 	       remodel, smithy, village, baron, great_hall};
