@@ -46,13 +46,14 @@ int main () {
       ((char*)&G)[i] = floor(Random() * 256);
     }
     p = floor(Random() * 2);
+    G.whoseTurn = p;
     G.deckCount[p] = 20;
     G.discardCount[p] = floor(Random() * MAX_DECK);
     G.handCount[p] = floor(Random() * MAX_HAND);
     printf("now going to check council room");
     checkCouncilRoom(p, &G);
     printf("you made it out of the checkCouncilRoom");
-    //printf("completed test %d", n);
+    printf("completed test %d", n);
   }
 
   printf ("ALL TESTS OK\n");
