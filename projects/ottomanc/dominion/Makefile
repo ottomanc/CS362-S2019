@@ -34,6 +34,9 @@ runtests: testDrawCard
 randomtestcard1: randomtestcard1.c dominion.o rngs.o
 	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
 
+randomtestcard1a: randomtestcard1a.c dominion.o rngs.o
+	gcc -o randomtestcard1a -g randomtestcard1a.c dominion.o rngs.o $(CFLAGS)
+
 #uncomment when all done
 #randomtestcard2: randomtestcard2.c dominion.o rngs.o
 #	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
