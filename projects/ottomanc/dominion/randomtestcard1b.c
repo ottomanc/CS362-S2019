@@ -55,6 +55,7 @@ int main () {
     G.discardCount[p] = floor(Random() * MAX_DECK);
     G.handCount[p] = floor(Random() * MAX_HAND);
     G.whoseTurn = p;
+    G.playedCardCount = 0;
 
     printf("now going to check council room\n");
     checkCouncilRoom(&G);
