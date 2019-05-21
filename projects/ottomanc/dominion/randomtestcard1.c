@@ -35,14 +35,16 @@ int main () {
   //int seed = 1000;
   struct gameState G;
 
+  numPlayers = 2;
+
   printf ("Testing Council Room Card.\n");
 
   printf ("RANDOM TESTS.\n");
 
   SelectStream(2);
   PutSeed(3);
-  int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
-		sea_hag, tribute, smithy, council_room};
+  //int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
+	//	sea_hag, tribute, smithy, council_room};
 
   for (n = 0; n < 2000; n++) {
     for (i = 0; i < sizeof(struct gameState); i++) {
