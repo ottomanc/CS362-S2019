@@ -27,43 +27,22 @@ int checkCouncilRoom(int p, struct gameState *post){
 
   //replicate what the function call should do to see if the pre and post states then match
   for(i = 0; i < 4; i++){
-    if (pre.deckCount[p] > 0) {
-      pre.handCount[p]++;
-      pre.hand[p][pre.handCount[p]-1] = pre.deck[p][pre.deckCount[p]-1];
-      pre.deckCount[p]--;
-    } else if (pre.discardCount[p] > 0) {
-      memcpy(pre.deck[p], post->deck[p], sizeof(int) * pre.discardCount[p]);
-      memcpy(pre.discard[p], post->discard[p], sizeof(int)*pre.discardCount[p]);
-      pre.hand[p][post->handCount[p]-1] = post->hand[p][post->handCount[p]-1];
-      pre.handCount[p]++;
-      pre.deckCount[p] = pre.discardCount[p]-1;
-      pre.discardCount[p] = 0;
-    }
+    drawCard(p, &pre);
   }
 
   //each other player draws a card
   for(i = 0; i < pre.numPlayers; i++){
       if (i != p){
-      if (pre.deckCount[p] > 0) {
-        pre.handCount[p]++;
-        pre.hand[p][pre.handCount[p]-1] = pre.deck[p][pre.deckCount[p]-1];
-        pre.deckCount[p]--;
-      } else if (pre.discardCount[p] > 0) {
-        memcpy(pre.deck[p], post->deck[p], sizeof(int) * pre.discardCount[p]);
-        memcpy(pre.discard[p], post->discard[p], sizeof(int)*pre.discardCount[p]);
-        pre.hand[p][post->handCount[p]-1] = post->hand[p][post->handCount[p]-1];
-        pre.handCount[p]++;
-        pre.deckCount[p] = pre.discardCount[p]-1;
-        pre.discardCount[p] = 0;
+        drawCard(i, &pre);
       }
     }
-  }
 
   //increase the numBuys by 1
   pre.numBuys++;
 
   assert(memcmp(&pre, post, sizeof(struct gameState)) == 0);
 }
+
 
 int main () {
 
