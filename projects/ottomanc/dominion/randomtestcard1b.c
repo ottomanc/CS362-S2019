@@ -14,7 +14,7 @@
 #define NOISY_TEST 1
 
 int checkCouncilRoom(struct gameState *post){
-  printf("you are inside the checkcouncilroom");
+  printf("you are inside the checkcouncilroom\n");
   struct gameState pre;
   memcpy (&pre, post, sizeof(struct gameState));
   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
@@ -30,7 +30,7 @@ int checkCouncilRoom(struct gameState *post){
 
 int main () {
 
-  int n, p;
+  int i, n, r, p;
 
   int k[10] = {adventurer, council_room, feast, gardens, mine,
 	       remodel, smithy, village, baron, great_hall};
@@ -41,12 +41,29 @@ int main () {
 
   printf ("RANDOM TESTS.\n");
 
-  initializeGame(2, k, 1, &G);
+  //initializeGame(2, k, 1, &G);
 
-  printf("now going to check council room");
-  checkCouncilRoom(&G);
-  printf("you made it out of the checkCouncilRoom");
-  //printf("completed test %d", n);
+  SelectStream(2);
+  PutSeed(3);
+
+  for (n = 0; n < 2000; n++) {
+    for (i = 0; i < sizeof(struct gameState); i++) {
+      ((char*)&G)[i] = floor(Random() * 256);
+    }
+    p = floor(Random() * 2);
+    G.deckCount[p] = floor(Random() * MAX_DECK);
+    G.discardCount[p] = floor(Random() * MAX_DECK);
+    G.handCount[p] = floor(Random() * MAX_HAND);
+    G.whoseTurn = p;
+
+    printf("now going to check council room\n");
+    checkCouncilRoom(&G);
+    printf("you made it out of the checkCouncilRoom]n");
+    printf("completed test %d\n", n);
+
+  }
+
+
 
   printf ("ALL TESTS OK\n");
 
