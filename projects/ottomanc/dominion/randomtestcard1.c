@@ -41,6 +41,24 @@ int checkCouncilRoom(int p, struct gameState *post){
     }
   }
 
+  //each other player draws a card
+  for(i = 0; i < 2; i++){
+      if (i != p){
+      if (pre.deckCount[p] > 0) {
+        pre.handCount[p]++;
+        pre.hand[p][pre.handCount[p]-1] = pre.deck[p][pre.deckCount[p]-1];
+        pre.deckCount[p]--;
+      } else if (pre.discardCount[p] > 0) {
+        memcpy(pre.deck[p], post->deck[p], sizeof(int) * pre.discardCount[p]);
+        memcpy(pre.discard[p], post->discard[p], sizeof(int)*pre.discardCount[p]);
+        pre.hand[p][post->handCount[p]-1] = post->hand[p][post->handCount[p]-1];
+        pre.handCount[p]++;
+        pre.deckCount[p] = pre.discardCount[p]-1;
+        pre.discardCount[p] = 0;
+      }
+    }
+  }
+
   //increase the numBuys by 1
   pre.numBuys++;
 
