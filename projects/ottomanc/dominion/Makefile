@@ -34,30 +34,23 @@ runtests: testDrawCard
 randomtestcard1: randomtestcard1.c dominion.o rngs.o
 	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
 
-#uncomment when all done
-#randomtestcard2: randomtestcard2.c dominion.o rngs.o
-#	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+randomtestcard2: randomtestcard2.c dominion.o rngs.o
+	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
 
 randomtestadventurer: randomtestadventurer.c dominion.o rngs.o
 	gcc -o randomtestadventurer -g randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
 
-#randomtestresults: randomtestcard1 randomtestcard2 randomtestadventurer
-
-#uncomment when all done
-randomtestresults: randomtestadventurer
+randomtestresults: randomtestadventurer randomtestcard1 randomtestcard2
 	./randomtestcard1 &> randomtestresults.out
 	./randomtestadventurer >> randomtestresults.out
-#	./randomtestcard2 >> randomtestresults.out
+	./randomtestcard2 >> randomtestresults.out
 	gcov dominion.c -b >> randomtestresults.out
 	cat dominion.c.gcov >> randomtestresults.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player randomtestcard1 adventurer randomtestresults
-
-#uncomment when all done
-#all: playdom player randomtestcard1 randomtestcard2 randomtestadventurer randomtestresults
+all: playdom player randomtestcard1 randomtestcard2 randomtestadventurer randomtestresults
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe randomtestcard1 randomtestcard1.exe

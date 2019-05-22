@@ -14,12 +14,12 @@
 #define NOISY_TEST 1
 
 int checkAdventurer(int p, struct gameState *post){
-  //printf("you are inside the checkcouncilroom\n");
+  //printf("you are inside the checkAdventurer\n");
   struct gameState pre;
   memcpy (&pre, post, sizeof(struct gameState));
   int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
 
-  int r, i, currentPlayer;
+  int r, currentPlayer;
   currentPlayer = p;
  
   r = cardEffect(adventurer, choice1, choice2, choice3, post, handpos, &bonus);
@@ -90,9 +90,9 @@ int main () {
     //randomly assign the numBuys
     G.numBuys = floor(Random() * MAX_DECK);
 
-    //printf("now going to check council room\n");
+    //printf("now going to check adventurer\n");
     checkAdventurer(p, &G);
-    //printf("you made it out of the checkCouncilRoom\n");
+    //printf("you made it out of the checkAdventurer\n");
     //printf("completed test %d\n", n);
 
   }
