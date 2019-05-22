@@ -7,7 +7,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-#include <math.h>
+//#include <math.h>
 #include "rngs.h"
 
 #define DEBUG 0
@@ -59,10 +59,10 @@ int main () {
 
   printf ("RANDOM TESTS.\n");
 
-  PutSeed(3);
   SelectStream(2);
+  PutSeed(3);
 
-  for (n = 0; n < 20000; n++) {
+  for (n = 0; n < 2000; n++) {
     //initialize the game to set up all the variables
     initializeGame(2, k, 1, &G);
     //choose the player randomly from the 2 available
