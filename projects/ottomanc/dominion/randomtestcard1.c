@@ -7,7 +7,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
-//#include <math.h>
+#include <math.h>
 #include "rngs.h"
 
 #define DEBUG 0
@@ -48,7 +48,7 @@ int checkCouncilRoom(int p, struct gameState *post){
 
 int main () {
 
-  int i, n, p;
+  int n, p;
 
   int k[10] = {adventurer, council_room, feast, gardens, mine,
 	       remodel, smithy, village, baron, great_hall};
