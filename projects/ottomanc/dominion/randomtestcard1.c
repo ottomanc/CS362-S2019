@@ -63,11 +63,8 @@ int main () {
   PutSeed(3);
 
   for (n = 0; n < 2000; n++) {
-    for (i = 0; i < sizeof(struct gameState); i++) {
-      ((char*)&G)[i] = floor(Random() * 256);
-    }   
     //initialize the game to set up all the variables
-    //initializeGame(2, k, 1, &G);
+    initializeGame(2, k, 1, &G);
     //choose the player randomly from the 2 available
     p = floor(Random() * 2);
     //randomly assign the deckCount to a value <500
