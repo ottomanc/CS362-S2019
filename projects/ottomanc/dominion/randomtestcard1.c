@@ -41,10 +41,6 @@ int checkCouncilRoom(int p, struct gameState *post){
   discardCard(handpos, p, &pre, 0);
 
   //check and see if they match
-  //assert(pre.numBuys == post->numBuys);
-  //printf("pre handcount: %d; post handcount: %d\n", pre.handCount[p], post->handCount[p]);
-  //assert(pre.handCount[p] == post->handCount[p]);
-  //assert(pre.discardCount[p] == post->discardCount[p]);
 
   assert(memcmp(&pre, post, sizeof(struct gameState)) == 0);
 }
@@ -63,8 +59,8 @@ int main () {
 
   printf ("RANDOM TESTS.\n");
 
-  SelectStream(2);
   PutSeed(3);
+  SelectStream(2);
 
   for (n = 0; n < 20000; n++) {
     //initialize the game to set up all the variables
