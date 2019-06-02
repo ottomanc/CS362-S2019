@@ -661,7 +661,7 @@ int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlaye
     if (*cardDrawn == copper || *cardDrawn == silver || *cardDrawn == gold)
 	    *drawntreasure = *drawntreasure + 1;
 	  else{
-	    temphand[*z]=*cardDrawn;
+	    temphand[*z] = cardDrawn;
 	    state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
 	    *z++;
 	  }
