@@ -650,7 +650,7 @@ int getCost(int cardNumber)
 * Function Description: Handles the play of the adventurer card
 ********************************************************************************************************/
 int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlayer, int *cardDrawn, int *z, int temphand[], int handPos){
-  while(*drawntreasure<2){
+  while(drawntreasure<2){
 	  if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	    shuffle(currentPlayer, state);
 	  }
@@ -659,7 +659,7 @@ int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlaye
 	  *cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 	  
     if (*cardDrawn == copper || *cardDrawn == silver || *cardDrawn == gold)
-	    *drawntreasure++;
+	    drawntreasure++;
 	  else{
 	    temphand[*z]=*cardDrawn;
 	    state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
