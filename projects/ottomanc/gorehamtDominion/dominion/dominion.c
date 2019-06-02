@@ -649,27 +649,27 @@ int getCost(int cardNumber)
 * Function Name: adventurerFunc
 * Function Description: Handles the play of the adventurer card
 ********************************************************************************************************/
-int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlayer, int *cardDrawn, int z, int temphand[], int handPos){
-  while(drawntreasure<2){
+int adventurerFunc(struct gameState *state, int *drawntreasure, int currentPlayer, int *cardDrawn, int *z, int temphand[], int handPos){
+  while(*drawntreasure<2){
 	  if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	    shuffle(currentPlayer, state);
 	  }
 
 	  drawCard(currentPlayer, state);
-	  cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+	  *cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 	  
-    if (cardDrawn == copper || *cardDrawn == silver || *cardDrawn == gold)
-	    drawntreasure++;
+    if (*cardDrawn == copper || *cardDrawn == silver || *cardDrawn == gold)
+	    *drawntreasure++;
 	  else{
-	    temphand[z]=cardDrawn;
+	    temphand[*z]=*cardDrawn;
 	    state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
-	    z++;
+	    *z++;
 	  }
   }
 
-  while(z-1>=0){
-	  state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-	  z=z-1;
+  while(*z-1>=0){
+	  state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[*z-1]; // discard all cards in play that have been drawn
+	  *z=*z-1;
   }
 
   //discard card from hand
