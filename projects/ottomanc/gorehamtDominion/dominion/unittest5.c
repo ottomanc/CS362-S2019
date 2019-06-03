@@ -44,7 +44,7 @@ int main() {
 	printf("----------------- Testing Card: %s ----------------\n", TESTCARD);
 
 	// ----------- TEST 1: add 2 coins to the current player--------------
-	printf("TEST 1: add 2 coints to the current player\n");
+	printf("TEST 1: add 2 coins to the current player\n");
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
@@ -122,11 +122,11 @@ int main() {
 	memcpy(&testG, &G, sizeof(struct gameState));
 	
 	//have all other players draw 5 cards
-	for(i=1; i<G.numPlayers; i++){
-		for(j=0; j<5; j++){
-			drawCard(i, &testG);
-		}
-	}
+	//for(i=1; i<G.numPlayers; i++){
+	//	for(j=0; j<5; j++){
+	//		drawCard(i, &testG);
+	//	}
+	//}
 
 	cardEffect(cutpurse, choice1, choice2, choice3, &testG, handpos, &bonus);
 
@@ -137,6 +137,7 @@ int main() {
 
 	newCards = 0;
 	coppers = 0;
+	discarded = 0;
 	for(i=1; i<G.numPlayers; i++){
 		coppers = 0;
 		for (j=0; j < G.handCount[i]; j++){
