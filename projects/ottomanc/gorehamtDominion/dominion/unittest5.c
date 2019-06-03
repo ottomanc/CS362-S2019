@@ -34,7 +34,7 @@ int main() {
     int seed = 1000;
     int numPlayers = 2;
     int thisPlayer = 0;
-	struct gameState G, testG;
+	struct gameState G, testG, testG2;
 	int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
 			sea_hag, tribute, smithy, council_room};
 
@@ -64,21 +64,26 @@ int main() {
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
-	cardEffect(cutpurse, choice1, choice2, choice3, &testG, handpos, &bonus);
+
 
 	//to make sure that that the coppers are being removed, set the cards all to copper in the deck
-	for(i=1; i<G.numPlayers; i++){
-		for(j=0; j<G.deckCount[i]; j++){
-			G.deck[i][j] = copper;
+	for(i=1; i<testG.numPlayers; i++){
+		for(j=0; j<testG.deckCount[i]; j++){
+			testG.deck[i][j] = copper;
 		}
 	}
 
 	//have all other players draw 5 cards
-	for(i=1; i<G.numPlayers; i++){
+	for(i=1; i<testG.numPlayers; i++){
 		for(j=0; j<5; j++){
 			drawCard(i, &testG);
 		}
 	}
+	
+	// copy the testgame state to a second test case
+	memcpy(&testG2, &testG, sizeof(struct gameState));
+
+	cardEffect(cutpurse, choice1, choice2, choice3, &testG, handpos, &bonus);
 
     //check each player to see if their cards in hand and deck have changed
 	//check how many coppers they had to start
@@ -87,10 +92,10 @@ int main() {
 
 	newCards = 0;
 	int coppers = 0;
-	for(i=1; i<G.numPlayers; i++){
+	for(i=1; i<testG2.numPlayers; i++){
 		coppers = 0;
-		for (j=0; j < G.handCount[i]; j++){
-			if (G.hand[i][j] == copper){
+		for (j=0; j < testG2.handCount[i]; j++){
+			if (testG2.hand[i][j] == copper){
 				coppers++;
 			}
 		}
@@ -104,10 +109,10 @@ int main() {
 		}
 		
 		printf("player %d copper count = %d\n", i, coppers);
-		printf("player %d hand count = %d, expected = %d\n", i, testG.handCount[i], G.handCount[i] - discarded);
-        assert(testG.handCount[i] == G.handCount[i] - discarded);
-        printf("player %d deck count = %d, expected = %d\n", i, testG.deckCount[i], G.deckCount[i]);
-        assert(testG.deckCount[i] == G.deckCount[i]);     
+		printf("player %d hand count = %d, expected = %d\n", i, testG.handCount[i], testG2.handCount[i] - discarded);
+        assert(testG.handCount[i] == testG2.handCount[i] - discarded);
+        printf("player %d deck count = %d, expected = %d\n", i, testG.deckCount[i], testG2.deckCount[i]);
+        assert(testG.deckCount[i] == testG2.deckCount[i]);     
     }
 
 	// ----------- TEST 3: other players lose 1 copper from their hand if they have one--------------
