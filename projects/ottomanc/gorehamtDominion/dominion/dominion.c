@@ -760,6 +760,7 @@ int cutpurseFunc(struct gameState * state, int currentPlayer, int handPos){
 	    for (j = 0; j < state->handCount[i]; j++){
 		    if (state->hand[i][j] == copper){
 		      discardCard(j, i, state, 0);
+          break;
 		    }
 		    
         if (j == state->handCount[i]){
