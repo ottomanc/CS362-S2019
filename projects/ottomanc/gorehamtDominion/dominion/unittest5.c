@@ -28,7 +28,7 @@ int main() {
     int xtraCoins = 0;
     int shuffledCards = 0;
 
-    int i;
+    int i, j;
     int newActions;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int seed = 1000;
@@ -60,20 +60,27 @@ int main() {
 	assert(testG.coins == G.coins + xtraCoins);
 
 	// ----------- TEST 2: other players lose 1 copper from their hand if they have one--------------
-	printf("TEST 2: other players lose 1 copper from their hand if they have one\n");
+	printf("TEST 2: other players lose 1 copper from their hand if they have one (all copper)\n");
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
 	cardEffect(cutpurse, choice1, choice2, choice3, &testG, handpos, &bonus);
 
+	//to make sure that that the coppers are being removed, set the cards all to copper in the hand
+	for(i=1; i<G.numPlayers; i++){
+		for(j=0; j<G.handCount[i]; j++){
+			G.hand[i][j] = copper;
+		}
+	}
+
     //check each player to see if their cards in hand and deck have changed
 	//check how many coppers they had to start
 	//if 0, then starting hand count should be the same 
 	//if > 0 then starting hand count should be one more than ending hand count
+
 	newCards = 0;
 	int coppers = 0;
 	for(i=1; i<G.numPlayers; i++){
-        int j;
 		coppers = 0;
 		for (j=0; j < G.handCount[i]; j++){
 			if (G.hand[i][j] == copper){
@@ -96,9 +103,47 @@ int main() {
         assert(testG.deckCount[i] == G.deckCount[i]);     
     }
 
-	// ----------- TEST 3: no state changes for victory card piles and kingdom card piles --------------
+	// ----------- TEST 3: other players lose 1 copper from their hand if they have one--------------
+	printf("TEST 3: other players lose 1 copper from their hand if they have one (random copper)\n");
 
-	printf("TEST 3: check no change in victory + kingdom card piles\n");
+	// copy the game state to a test case
+	memcpy(&testG, &G, sizeof(struct gameState));
+	cardEffect(cutpurse, choice1, choice2, choice3, &testG, handpos, &bonus);
+
+    //check each player to see if their cards in hand and deck have changed
+	//check how many coppers they had to start
+	//if 0, then starting hand count should be the same 
+	//if > 0 then starting hand count should be one more than ending hand count
+
+	newCards = 0;
+	int coppers = 0;
+	for(i=1; i<G.numPlayers; i++){
+		coppers = 0;
+		for (j=0; j < G.handCount[i]; j++){
+			if (G.hand[i][j] == copper){
+				coppers++;
+			}
+		}
+
+		if (coppers < 1){
+			discarded = 0;
+		}
+		else
+		{
+			discarded = 1;
+		}
+		
+		printf("player %d copper count = %d", i, coppers);
+		printf("player %d hand count = %d, expected = %d\n", i, testG.handCount[i], G.handCount[i] - discarded);
+        assert(testG.handCount[i] == G.handCount[i] - discarded);
+        printf("player %d deck count = %d, expected = %d\n", i, testG.deckCount[i], G.deckCount[i]);
+        assert(testG.deckCount[i] == G.deckCount[i]);     
+    }
+
+
+	// ----------- TEST 4: no state changes for victory card piles and kingdom card piles --------------
+
+	printf("TEST 4: check no change in victory + kingdom card piles\n");
 
 	// copy the game state to a test case
 	memcpy(&testG, &G, sizeof(struct gameState));
