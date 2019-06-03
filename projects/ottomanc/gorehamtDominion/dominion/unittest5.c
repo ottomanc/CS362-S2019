@@ -66,10 +66,10 @@ int main() {
 	memcpy(&testG, &G, sizeof(struct gameState));
 	cardEffect(cutpurse, choice1, choice2, choice3, &testG, handpos, &bonus);
 
-	//to make sure that that the coppers are being removed, set the cards all to copper in the hand
+	//to make sure that that the coppers are being removed, set the cards all to copper in the deck
 	for(i=1; i<G.numPlayers; i++){
-		for(j=0; j<G.handCount[i]; j++){
-			G.hand[i][j] = copper;
+		for(j=0; j<G.deckCount[i]; j++){
+			G.deck[i][j] = copper;
 		}
 	}
 
@@ -96,7 +96,7 @@ int main() {
 			discarded = 1;
 		}
 		
-		printf("player %d copper count = %d", i, coppers);
+		printf("player %d copper count = %d\n", i, coppers);
 		printf("player %d hand count = %d, expected = %d\n", i, testG.handCount[i], G.handCount[i] - discarded);
         assert(testG.handCount[i] == G.handCount[i] - discarded);
         printf("player %d deck count = %d, expected = %d\n", i, testG.deckCount[i], G.deckCount[i]);
