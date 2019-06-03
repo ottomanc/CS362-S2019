@@ -29,7 +29,7 @@ int main() {
     int shuffledCards = 0;
 
     int i, j;
-    int newActions;
+    //int newActions;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int seed = 1000;
     int numPlayers = 2;
@@ -116,7 +116,7 @@ int main() {
 	//if > 0 then starting hand count should be one more than ending hand count
 
 	newCards = 0;
-	int coppers = 0;
+	coppers = 0;
 	for(i=1; i<G.numPlayers; i++){
 		coppers = 0;
 		for (j=0; j < G.handCount[i]; j++){
